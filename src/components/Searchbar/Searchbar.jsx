@@ -6,6 +6,7 @@ import { toast } from 'react-toastify';
    state = {
      searchQuery: '',
    }
+
    
    handleImgChange = e => {
     this.setState({searchQuery: e.currentTarget.value})
