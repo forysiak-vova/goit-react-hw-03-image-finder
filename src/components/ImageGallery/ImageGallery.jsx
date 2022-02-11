@@ -6,6 +6,7 @@ function ImageGallery({ items }) {
         <ImageGalleryItem
           key={item.id}
           id={item.id}
+          tags={item.tags}
           webformatURL={item.webformatURL}
           largeImageURL={item.largeImageURL}
         />
