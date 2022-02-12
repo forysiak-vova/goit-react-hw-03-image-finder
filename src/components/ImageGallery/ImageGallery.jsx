@@ -1,6 +1,6 @@
 import ImageGalleryItem from '../ImageGalleryItem';
 
-function ImageGallery({ items }) {
+function ImageGallery({ items, clickImage }) {
   return (
     <ul>
       {items.map(({ id, webformatURL, largeImageURL, tags }) => (
@@ -9,6 +9,7 @@ function ImageGallery({ items }) {
           tags={tags}
           webformatURL={webformatURL}
           largeImageURL={largeImageURL}
+          clickImage={clickImage}
         />
       ))}
     </ul>

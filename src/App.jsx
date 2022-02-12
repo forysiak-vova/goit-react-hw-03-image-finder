@@ -14,7 +14,8 @@ export class App extends Component {
     loading: false,
     status: 'idle',
     page: 1,
-    showModal: true,
+    showModal: false,
+    modalImage: '',
   };
 
   componentDidUpdate(prevProps, prevState) {
@@ -72,9 +73,26 @@ export class App extends Component {
     }));
   };
 
+  clickImage = e => {
+    const srcImg = e.target.getAttribute('src');
+    const altImg = e.target.getAttribute('alt');
+
+    this.setState({
+      modalImage: { srcImg, altImg },
+      showModal: true,
+    });
+  };
+
   render() {
-    const { status, ansferImages, searchQuery, loading, showModal } =
-      this.state;
+    const {
+      status,
+      ansferImages,
+      searchQuery,
+      loading,
+      showModal,
+      clickImage,
+      modalImage,
+    } = this.state;
     const btn = !(ansferImages.length < 12);
 
     return (
@@ -84,7 +102,7 @@ export class App extends Component {
 
         {status === 'resolved' && (
           <>
-            <ImageGallery items={ansferImages} />
+            <ImageGallery items={ansferImages} clickImage={this.clickImage} />
 
             {btn && (
               <Button nextClick={this.addImage} loading={loading}>
@@ -98,9 +116,11 @@ export class App extends Component {
           <h1>There are no pictures with this name: {searchQuery}</h1>
         )}
         {showModal && (
-          <Modal onClose={this.toggleModal}>
-            <h1>привіт, це контент модалки</h1>
-          </Modal>
+          <Modal
+            onClose={this.toggleModal}
+            src={modalImage.srcImg}
+            alt={modalImage.altImg}
+          ></Modal>
         )}
 
         <ToastContainer
