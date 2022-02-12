@@ -14,6 +14,7 @@ export class App extends Component {
     loading: false,
     status: 'idle',
     page: 1,
+    showModal: true,
   };
 
   componentDidUpdate(prevProps, prevState) {
@@ -65,8 +66,15 @@ export class App extends Component {
     }));
   };
 
+  toggleModal = () => {
+    this.setState(({ showModal }) => ({
+      showModal: !showModal,
+    }));
+  };
+
   render() {
-    const { status, ansferImages, searchQuery, loading } = this.state;
+    const { status, ansferImages, searchQuery, loading, showModal } =
+      this.state;
     const btn = !(ansferImages.length < 12);
 
     return (
@@ -88,6 +96,11 @@ export class App extends Component {
 
         {status === 'reject' && (
           <h1>There are no pictures with this name: {searchQuery}</h1>
+        )}
+        {showModal && (
+          <Modal onClose={this.toggleModal}>
+            <h1>привіт, це контент модалки</h1>
+          </Modal>
         )}
 
         <ToastContainer

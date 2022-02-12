@@ -1,4 +1,5 @@
 import ImageGalleryItem from '../ImageGalleryItem';
+
 function ImageGallery({ items }) {
   return (
     <ul>
