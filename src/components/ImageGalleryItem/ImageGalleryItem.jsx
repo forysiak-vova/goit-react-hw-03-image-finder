@@ -7,7 +7,13 @@ function ImageGalleryItem({
 }) {
   return (
     <li>
-      <img src={webformatURL} alt={tags} width="300" onClick={clickImage} />
+      <img
+        src={webformatURL}
+        alt={tags}
+        width="300"
+        src-img={largeImageURL}
+        onClick={clickImage}
+      />
     </li>
   );
 }

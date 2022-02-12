@@ -74,7 +74,7 @@ export class App extends Component {
   };
 
   clickImage = e => {
-    const srcImg = e.target.getAttribute('src');
+    const srcImg = e.target.getAttribute('src-img');
     const altImg = e.target.getAttribute('alt');
 
     this.setState({
@@ -90,11 +90,9 @@ export class App extends Component {
       searchQuery,
       loading,
       showModal,
-      clickImage,
       modalImage,
     } = this.state;
     const btn = !(ansferImages.length < 12);
-
     return (
       <>
         <Searchbar onSubmit={this.handelFormSubmit} />

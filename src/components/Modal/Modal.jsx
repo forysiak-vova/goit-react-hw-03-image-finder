@@ -25,7 +25,7 @@ class Modal extends Component {
   };
 
   render() {
-    const { src, alt } = this.props;
+    const { src, alt, loading } = this.props;
     return createPortal(
       <Overlay onClick={this.handleBackdropClick}>
         <Modall>
