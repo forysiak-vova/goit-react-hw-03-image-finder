@@ -1,6 +1,7 @@
 import Searchbar from './components/Searchbar';
 import ImageGallery from './components/ImageGallery';
 import Loader from './components/Loader';
+import Modal from './components/Modal';
 import Button from 'components/Button';
 import { Component } from 'react';
 import { ToastContainer } from 'react-toastify';
