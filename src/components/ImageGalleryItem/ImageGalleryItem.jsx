@@ -1,3 +1,4 @@
+import { ImageItem, ImageGalleryItemImage } from './ImageGalleryItem.styled';
 function ImageGalleryItem({
   id,
   webformatURL,
@@ -6,15 +7,15 @@ function ImageGalleryItem({
   clickImage,
 }) {
   return (
-    <li>
-      <img
+    <ImageItem>
+      <ImageGalleryItemImage
         src={webformatURL}
         alt={tags}
         width="300"
-        src-img={largeImageURL}
+        src={largeImageURL}
         onClick={clickImage}
       />
-    </li>
+    </ImageItem>
   );
 }
 

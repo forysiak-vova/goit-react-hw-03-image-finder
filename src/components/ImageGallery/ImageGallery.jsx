@@ -1,8 +1,9 @@
+import React from 'react';
 import ImageGalleryItem from '../ImageGalleryItem';
-
+import { List } from './ImageGallery.styled';
 function ImageGallery({ items, clickImage }) {
   return (
-    <ul>
+    <List>
       {items.map(({ id, webformatURL, largeImageURL, tags }) => (
         <ImageGalleryItem
           key={id}
@@ -12,7 +13,7 @@ function ImageGallery({ items, clickImage }) {
           clickImage={clickImage}
         />
       ))}
-    </ul>
+    </List>
   );
 }
 

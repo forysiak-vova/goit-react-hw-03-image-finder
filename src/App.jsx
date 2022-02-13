@@ -2,6 +2,7 @@ import Searchbar from './components/Searchbar';
 import ImageGallery from './components/ImageGallery';
 import Loader from './components/Loader';
 import Modal from './components/Modal';
+import { Container } from './App.styled';
 import Button from 'components/Button';
 import { Component } from 'react';
 import { ToastContainer } from 'react-toastify';
@@ -23,31 +24,29 @@ export class App extends Component {
       prevState.searchQuery !== this.state.searchQuery ||
       prevState.page !== this.state.page
     ) {
-      setTimeout(() => {
-        fetch(
-          `https://pixabay.com/api/?q=${this.state.searchQuery}&page=${this.state.page}&key=24625422-32b02834f3df76db1a58654ff&image_type=photo&orientation=horizontal&per_page=12`
-        )
-          .then(response => response.json())
-          .then(({ hits }) => {
-            if (hits.length === 0) {
-              // return Promise.reject(
-              //   new Error(
-              //     `Немає картинок з таким іменем ${this.state.searchQuery}`
-              //   )
-              // );
-              this.setState({ status: 'reject' });
-              return;
-            }
+      fetch(
+        `https://pixabay.com/api/?q=${this.state.searchQuery}&page=${this.state.page}&key=24625422-32b02834f3df76db1a58654ff&image_type=photo&orientation=horizontal&per_page=12`
+      )
+        .then(response => response.json())
+        .then(({ hits }) => {
+          if (hits.length === 0) {
+            // return Promise.reject(
+            //   new Error(
+            //     `Немає картинок з таким іменем ${this.state.searchQuery}`
+            //   )
+            // );
+            this.setState({ status: 'reject' });
+            return;
+          }
 
-            return this.setState(prev => ({
-              ansferImages: [...prev.ansferImages, ...hits],
-              status: 'resolved',
-              loading: false,
-            }));
-          });
-        // .catch(error => this.setState({ error }))
-        // .finally(() => this.setState({ loading: false }));
-      }, 1000);
+          return this.setState(prev => ({
+            ansferImages: [...prev.ansferImages, ...hits],
+            status: 'resolved',
+            loading: false,
+          }));
+        });
+      // .catch(error => this.setState({ error }))
+      // .finally(() => this.setState({ loading: false }));
     }
   }
 
@@ -74,7 +73,7 @@ export class App extends Component {
   };
 
   clickImage = e => {
-    const srcImg = e.target.getAttribute('src-img');
+    const srcImg = e.target.getAttribute('src');
     const altImg = e.target.getAttribute('alt');
 
     this.setState({
@@ -94,7 +93,7 @@ export class App extends Component {
     } = this.state;
     const btn = !(ansferImages.length < 12);
     return (
-      <>
+      <Container>
         <Searchbar onSubmit={this.handelFormSubmit} />
         {status === 'pending' && <Loader />}
 
@@ -132,7 +131,7 @@ export class App extends Component {
           draggable
           pauseOnHover
         />
-      </>
+      </Container>
     );
   }
 }

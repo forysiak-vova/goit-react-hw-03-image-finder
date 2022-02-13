@@ -1,10 +1,10 @@
-
+import { ButtonLoad } from './Button.styled';
 const Button = ({ nextClick, children, loading }) => {
   return (
-    <button type="button" onClick={nextClick}>
-      {loading && children}
+    <ButtonLoad type="button" onClick={nextClick}>
+      {loading && <span>{children}</span>}
       {!loading && <span>Load more</span>}
-    </button>
+    </ButtonLoad>
   );
 };
 

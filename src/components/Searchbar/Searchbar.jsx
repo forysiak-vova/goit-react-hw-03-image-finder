@@ -1,63 +1,62 @@
 // import { render } from '@testing-library/react';
-import { Component } from "react";
+import { Component } from 'react';
 import { toast } from 'react-toastify';
+import {
+  SearchbarContainer,
+  SearchForm,
+  SearchFormButton,
+  SearchFormButtonLabel,
+  SearchFormInput,
+} from './Searchbar.styled';
 
- class Searchbar extends Component {
-   state = {
-     searchQuery: '',
-   }
+class Searchbar extends Component {
+  state = {
+    searchQuery: '',
+  };
 
-   
-   handleImgChange = e => {
-    this.setState({searchQuery: e.currentTarget.value})
+  handleImgChange = e => {
+    this.setState({ searchQuery: e.currentTarget.value });
+  };
+
+  handelSubmit = e => {
+    e.preventDefault();
+    if (this.state.searchQuery.trim() === '') {
+      toast.warn('🦄 Please, enter text !', {
+        position: 'top-right',
+        autoClose: 3000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+      });
+      return;
     }
-    
-    handelSubmit = e => {
-      e.preventDefault();
-      if (this.state.searchQuery.trim() === '') {
-       
-toast.warn('🦄 Please, enter text !', {
-position: "top-right",
-autoClose: 3000,
-hideProgressBar: false,
-closeOnClick: true,
-pauseOnHover: true,
-draggable: true,
-progress: undefined,
-});
-        return;
-      }
 
-       this.props.onSubmit(this.state.searchQuery)
+    this.props.onSubmit(this.state.searchQuery);
 
-       this.setState({searchQuery: ''})
-    }
+    this.setState({ searchQuery: '' });
+  };
 
   render() {
     return (
-         
-  
-       <header>
-        <form onSubmit={this.handelSubmit}>
-          <button type="submit" >
-            <span >Search</span>
-          </button>
+      <SearchbarContainer>
+        <SearchForm onSubmit={this.handelSubmit}>
+          <SearchFormButton type="submit">
+            <SearchFormButtonLabel>Search</SearchFormButtonLabel>
+          </SearchFormButton>
 
-          <input
-           
+          <SearchFormInput
             type="text"
-           autoComplete="off"
-						autoFocus
-          
+            autoComplete="off"
+            autoFocus
             placeholder="Search images and photos"
-                value={this.state.searchQuery}
-                onChange={this.handleImgChange}
+            value={this.state.searchQuery}
+            onChange={this.handleImgChange}
           />
-        </form>
-       </header>
-     
-    
-     )
+        </SearchForm>
+      </SearchbarContainer>
+    );
   }
 }
 
