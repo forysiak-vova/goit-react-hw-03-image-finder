@@ -12,7 +12,7 @@ function ImageGalleryItem({
         src={webformatURL}
         alt={tags}
         width="300"
-        src={largeImageURL}
+        srcc={largeImageURL}
         onClick={clickImage}
       />
     </ImageItem>

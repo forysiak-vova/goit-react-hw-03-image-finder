@@ -73,7 +73,7 @@ export class App extends Component {
   };
 
   clickImage = e => {
-    const srcImg = e.target.getAttribute('src');
+    const srcImg = e.target.getAttribute('srcc');
     const altImg = e.target.getAttribute('alt');
 
     this.setState({
