@@ -1,5 +1,6 @@
 import { Grid } from 'react-loader-spinner';
 import { Spinner } from './Loader.styled';
+
 // import 'react-loader-spinner/dist/loader/css/react-spinner-loader.css';
 
 function Loader() {

@@ -1,10 +1,16 @@
 import React, { Component } from 'react';
 import { createPortal } from 'react-dom';
 import { Overlay, Modall } from './Modal.styles';
+import PropTypes from 'prop-types';
 
 const modalRoot = document.querySelector('#modal-root');
 
 class Modal extends Component {
+  static propTypes = {
+    onClose: PropTypes.func.isRequired,
+    src: PropTypes.string.isRequired,
+    alt: PropTypes.string.isRequired,
+  };
   componentDidMount() {
     window.addEventListener('keydown', this.hendelKeyDown);
   }

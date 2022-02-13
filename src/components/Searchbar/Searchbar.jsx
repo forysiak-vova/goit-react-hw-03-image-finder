@@ -1,6 +1,8 @@
 // import { render } from '@testing-library/react';
 import { Component } from 'react';
 import { toast } from 'react-toastify';
+import { AiOutlineSearch } from 'react-icons/ai';
+import PropTypes from 'prop-types';
 import {
   SearchbarContainer,
   SearchForm,
@@ -10,6 +12,9 @@ import {
 } from './Searchbar.styled';
 
 class Searchbar extends Component {
+  static propTypes = {
+    onSubmit: PropTypes.func.isRequired,
+  };
   state = {
     searchQuery: '',
   };
@@ -43,7 +48,9 @@ class Searchbar extends Component {
       <SearchbarContainer>
         <SearchForm onSubmit={this.handelSubmit}>
           <SearchFormButton type="submit">
-            <SearchFormButtonLabel>Search</SearchFormButtonLabel>
+            <SearchFormButtonLabel>
+              {<AiOutlineSearch size={24} />}
+            </SearchFormButtonLabel>
           </SearchFormButton>
 
           <SearchFormInput

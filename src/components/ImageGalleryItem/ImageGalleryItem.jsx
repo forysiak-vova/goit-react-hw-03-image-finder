@@ -1,11 +1,6 @@
 import { ImageItem, ImageGalleryItemImage } from './ImageGalleryItem.styled';
-function ImageGalleryItem({
-  id,
-  webformatURL,
-  largeImageURL,
-  tags,
-  clickImage,
-}) {
+import PropTypes from 'prop-types';
+function ImageGalleryItem({ webformatURL, largeImageURL, tags, clickImage }) {
   return (
     <ImageItem>
       <ImageGalleryItemImage
@@ -18,5 +13,12 @@ function ImageGalleryItem({
     </ImageItem>
   );
 }
+
+ImageGalleryItem.propTypes = {
+  webformatURL: PropTypes.string.isRequired,
+  largeImageURL: PropTypes.string.isRequired,
+  tags: PropTypes.string.isRequired,
+  clickImage: PropTypes.func.isRequired,
+};
 
 export default ImageGalleryItem;
